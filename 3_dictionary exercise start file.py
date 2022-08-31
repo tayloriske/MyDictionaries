@@ -1,6 +1,8 @@
 # This program uses a dictionary as a deck of cards.
+import random
 
 def main():
+    mydeck = create_deck() 
     # Create a deck of cards.
    
 
@@ -10,9 +12,8 @@ def main():
 
 
     # Deal the cards.
+    deal_cards(mydeck, num_cards)
 
-
-    
     
 
 # The create_deck function returns a dictionary
@@ -45,7 +46,7 @@ def create_deck():
             'Queen of Diamonds':10, 'King of Diamonds': 10}
 
     # Return the deck.
-
+    return deck
 
 
 
@@ -55,24 +56,26 @@ def create_deck():
 def deal_cards(deck, number):
     # Initialize an accumulator for the hand value.
 
-    
+    handvalue = 0
     
 
     # Make sure the number of cards to deal is not
     # greater than the number of cards in the deck.
 
-    
-    
-
+    if number > len(deck):
+        number = len(deck)
     # Deal the cards and accumulate their values.
-    
+    for count in range(number):
+        card = random.choice(list(deck))
+        value = deck[card]
+        print(card)
+        handvalue += value
 
-
-    
+        del deck[card]
 
     # Display the value of the hand.
 
-    
+    print("Value of this hand is:", handvalue)
     
 
 # Call the main function.
