@@ -18,10 +18,12 @@ fileread = efile.read()
 efile.close()
 items = codes.items()
 
-for character in fileread:
-    if character not in codes.values() or character == "." or character == "," or character == "!":
-        print(character)
+encrypted_data = ""
+
+for i in readfile:
+    if i in codes:
+        encrypted_data += codes[i]
     else:
-        for x,y in items:
-            if character == y and character != ".":
-                print(x, end= "")
+        encrypted_data += i
+
+print(encrypted_data)
